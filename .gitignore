@@ -5,3 +5,6 @@ dist/
 .DS_Store
 .claude/
 .vscode/
+
+# AI assistant project instructions (personal/local only)
+CLAUDE.md

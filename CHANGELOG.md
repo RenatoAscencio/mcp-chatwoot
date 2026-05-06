@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.1] — 2026-05-06
+
+### Changed
+- Updated dependencies:
+  - `@modelcontextprotocol/sdk`: 1.26.0 → 1.29.0
+  - `axios`: 1.13.5 → 1.16.0
+  - `vitest`: 4.0.18 → 4.1.5
+  - `nock`: 14.0.11 → 14.0.14
+  - `@types/node`: 22.19.11 → 22.19.17
+
 ## [0.6.0] — 2026-02-17
 
 ### Added
