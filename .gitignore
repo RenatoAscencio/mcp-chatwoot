@@ -8,3 +8,6 @@ dist/
 
 # AI assistant project instructions (personal/local only)
 CLAUDE.md
+
+# Wallaby.js test runner (personal IDE config)
+wallaby.js
