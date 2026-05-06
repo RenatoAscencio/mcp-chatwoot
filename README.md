@@ -1,5 +1,15 @@
 # mcp-chatwoot
 
+[![Release](https://img.shields.io/github/v/release/RenatoAscencio/mcp-chatwoot?label=release&color=brightgreen)](https://github.com/RenatoAscencio/mcp-chatwoot/releases)
+[![License](https://img.shields.io/github/license/RenatoAscencio/mcp-chatwoot?color=blue)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%E2%89%A520-brightgreen)](https://nodejs.org)
+[![TypeScript](https://img.shields.io/badge/typescript-5.9-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Docker](https://img.shields.io/github/actions/workflow/status/RenatoAscencio/mcp-chatwoot/docker-publish.yml?label=docker&logo=docker)](https://github.com/RenatoAscencio/mcp-chatwoot/actions/workflows/docker-publish.yml)
+[![GHCR](https://img.shields.io/badge/ghcr.io-mcp--chatwoot-2496ED?logo=docker&logoColor=white)](https://github.com/RenatoAscencio/mcp-chatwoot/pkgs/container/mcp-chatwoot)
+[![MCP](https://img.shields.io/badge/MCP-compatible-8A2BE2)](https://modelcontextprotocol.io)
+[![Tools](https://img.shields.io/badge/tools-133-orange)](#buckets-overview)
+[![Tests](https://img.shields.io/badge/tests-240%20passing-success)](#development)
+
 MCP (Model Context Protocol) server for [Chatwoot](https://www.chatwoot.com/) — manage conversations, contacts, messages, agents, teams, and more through AI tools.
 
 ## Features
@@ -89,7 +99,21 @@ Knowledge base management for portals, articles, and categories.
 
 ## Quick Start
 
-### 1. Install
+### Option A: Docker (recommended for production)
+
+```bash
+docker run -d \
+  -e CHATWOOT_BASE_URL=https://your-chatwoot.com \
+  -e CHATWOOT_API_TOKEN=your_token \
+  -e MCP_MODE=http \
+  -e AUTH_TOKEN=your_secret \
+  -p 3000:3000 \
+  ghcr.io/renatoascencio/mcp-chatwoot:latest
+```
+
+### Option B: Local install
+
+#### 1. Clone and build
 
 ```bash
 git clone https://github.com/RenatoAscencio/mcp-chatwoot.git
@@ -98,7 +122,7 @@ npm install
 npm run build
 ```
 
-### 2. Configure
+#### 2. Configure
 
 ```bash
 cp .env.example .env
@@ -110,7 +134,7 @@ cp .env.example .env
 
 **Where to find your API token**: In Chatwoot, go to Profile Settings → Access Token.
 
-### 3. Run
+#### 3. Run
 
 **STDIO mode** (for Claude Desktop / Claude Code):
 ```bash
@@ -242,13 +266,43 @@ npm run build
 
 All Application API tools accept an `account_id` parameter. When `CHATWOOT_ACCOUNT_ID` is set, it serves as the default and `account_id` becomes optional. When not set, `account_id` is required on every tool call — this enables a single MCP instance to serve multiple Chatwoot accounts.
 
-## API Coverage
+## Documentation
 
 - [docs/API_COVERAGE.md](docs/API_COVERAGE.md) — Application API coverage matrix
-- [docs/EXPANSION_PLAN.md](docs/EXPANSION_PLAN.md) — Full expansion plan (all 4 buckets)
+- [docs/SCOPE.md](docs/SCOPE.md) — Tool scope and safe-mode behavior
 - [docs/PLATFORM_SECURITY.md](docs/PLATFORM_SECURITY.md) — Platform API security guide
 - [docs/ENTERPRISE.md](docs/ENTERPRISE.md) — Enterprise endpoints documentation
+- [CHANGELOG.md](CHANGELOG.md) — Release history
+
+## Docker
+
+Pre-built multi-arch images (amd64 + arm64) are published to GitHub Container Registry on every release:
+
+```bash
+docker pull ghcr.io/renatoascencio/mcp-chatwoot:latest
+docker run -d \
+  -e CHATWOOT_BASE_URL=https://your-chatwoot.com \
+  -e CHATWOOT_API_TOKEN=your_token \
+  -e MCP_MODE=http \
+  -e AUTH_TOKEN=your_secret \
+  -p 3000:3000 \
+  ghcr.io/renatoascencio/mcp-chatwoot:latest
+```
+
+Or use `docker-compose.yml` from the repo as a starting point.
+
+## Contributing
+
+Contributions are welcome. Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/my-feature`)
+3. Run tests (`npm test`) and ensure they pass
+4. Commit with a descriptive message
+5. Open a Pull Request
+
+For larger changes, please open an issue first to discuss.
 
 ## License
 
-MIT
+[MIT](LICENSE) © [Renato Ascencio](https://github.com/RenatoAscencio)
